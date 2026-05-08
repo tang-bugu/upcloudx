@@ -5,13 +5,24 @@ import { certificateStatusMap, domainStatusMap, projectStatusMap } from './prese
 import type { StatusMapItem, StatusPreset } from './types';
 
 interface Props {
-  status: number | string;
+  /** 状态值 */
+  status?: number | string;
+  /** 直接指定显示文本（优先级最高） */
+  text?: string;
+  /** 直接指定颜色（优先级最高） */
+  color?: string;
+  /** 自定义状态映射 */
   statusMap?: Record<number | string, StatusMapItem>;
+  /** 内置预设 */
   preset?: StatusPreset;
+  /** 标签尺寸 */
   size?: 'default' | 'small';
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  status: undefined,
+  text: undefined,
+  color: undefined,
   statusMap: undefined,
   preset: undefined,
   size: 'default',
@@ -27,9 +38,10 @@ const presetMap = computed<Record<number | string, StatusMapItem>>(() => {
 });
 
 const mergedMap = computed(() => ({ ...presetMap.value, ...(props.statusMap ?? {}) }));
-const currentItem = computed(() => mergedMap.value[props.status]);
-const tagText = computed(() => currentItem.value?.text ?? '未知');
-const tagColor = computed(() => currentItem.value?.color ?? 'default');
+const currentItem = computed(() => props.status !== undefined ? mergedMap.value[props.status] : undefined);
+
+const tagText = computed(() => props.text ?? currentItem.value?.text ?? '未知');
+const tagColor = computed(() => props.color ?? currentItem.value?.color ?? 'default');
 const tagStyle = computed(() => props.size === 'small' ? { fontSize: '12px', padding: '0 4px' } : {});
 </script>
 
