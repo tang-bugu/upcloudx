@@ -24,8 +24,10 @@ const props = withDefaults(defineProps<StatCardProps>(), {
     <template v-else>
       <div class="upx-stat-card__label">{{ props.label }}</div>
       <div class="upx-stat-card__value">
-        <span class="upx-stat-card__number" :style="props.color ? { color: props.color } : {}">{{ props.value }}</span>
-        <span v-if="props.unit" class="upx-stat-card__unit">{{ props.unit }}</span>
+        <slot name="value">
+          <span class="upx-stat-card__number" :style="props.color ? { color: props.color } : {}">{{ props.value }}</span>
+          <span v-if="props.unit" class="upx-stat-card__unit">{{ props.unit }}</span>
+        </slot>
       </div>
       <div v-if="props.trend" class="upx-stat-card__trend">
         <span :class="props.trend.direction === 'up' ? 'upx-stat-card__trend--up' : 'upx-stat-card__trend--down'">
