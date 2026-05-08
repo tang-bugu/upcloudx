@@ -3,6 +3,7 @@ export type CurrencyDisplayProps = {
   currency?: string;
   precision?: number;
   showSymbol?: boolean;
+  symbol?: string;
   colorize?: boolean;
   loading?: boolean;
   fontSize?: number | string;

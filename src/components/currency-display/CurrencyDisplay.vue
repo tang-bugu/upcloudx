@@ -9,6 +9,7 @@ const props = withDefaults(defineProps<CurrencyDisplayProps>(), {
   currency: 'CNY',
   precision: 6,
   showSymbol: true,
+  symbol: undefined,
   colorize: false,
   loading: false,
   fontSize: undefined,
@@ -20,6 +21,10 @@ const formattedAmount = computed<string>(() => {
     minimumFractionDigits: 0,
     maximumFractionDigits: props.precision,
   };
+  if (props.symbol) {
+    const num = new Intl.NumberFormat(undefined, { style: 'decimal', ...options }).format(props.amount);
+    return `${props.symbol}${num}`;
+  }
   if (props.showSymbol) {
     return new Intl.NumberFormat(undefined, {
       style: 'currency',
