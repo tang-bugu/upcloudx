@@ -36,19 +36,32 @@ import { EmptyState } from '../../src/index.ts';
 
 ## 自定义图标
 
+<EmptyState>
+  <template #image>
+    <svg width="64" height="48" viewBox="0 0 64 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="32" cy="24" r="20" stroke="currentColor" stroke-width="1.5" opacity="0.3"/>
+      <path d="M24 24L30 30L40 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+    </svg>
+  </template>
+</EmptyState>
+
 ```vue
 <EmptyState>
   <template #image>
-    <img src="/custom-empty.svg" width="64" />
+    <svg><!-- 自定义 SVG --></svg>
   </template>
 </EmptyState>
 ```
 
 ## 带操作按钮
 
+<EmptyState type="error">
+  <a-button type="primary" size="small">重新加载</a-button>
+</EmptyState>
+
 ```vue
 <EmptyState type="error">
-  <a-button type="primary" @click="reload">重新加载</a-button>
+  <Button type="primary" @click="reload">重新加载</Button>
 </EmptyState>
 ```
 
