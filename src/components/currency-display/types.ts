@@ -5,4 +5,6 @@ export type CurrencyDisplayProps = {
   showSymbol?: boolean;
   colorize?: boolean;
   loading?: boolean;
+  fontSize?: number | string;
+  color?: string;
 };
