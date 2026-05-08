@@ -12,7 +12,7 @@ export const domainStatusMap: Record<number, StatusMapItem> = {
 };
 
 export const certificateStatusMap: Record<number, StatusMapItem> = {
-  0: { text: '待申请', color: 'default' },
+  0: { text: '待申请', color: 'warning' },
   1: { text: '申请中', color: 'processing' },
   2: { text: '已签发', color: 'success' },
   3: { text: '申请失败', color: 'error' },
@@ -22,5 +22,5 @@ export const certificateStatusMap: Record<number, StatusMapItem> = {
 export const projectStatusMap: Record<number, StatusMapItem> = {
   0: { text: '申请中', color: 'processing' },
   1: { text: '启动', color: 'success' },
-  2: { text: '停用', color: 'default' },
+  2: { text: '停用', color: 'warning' },
 };
