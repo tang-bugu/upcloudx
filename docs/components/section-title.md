@@ -1,6 +1,6 @@
 # SectionTitle 分区标题
 
-带左侧色块装饰的分区标题。
+带左侧色块装饰的分区标题，用于页面内各区块的标题展示。
 
 ## 基础用法
 
@@ -15,6 +15,22 @@ import { SectionTitle } from '../../src/index.ts';
 ```vue
 <SectionTitle title="基本信息" />
 <SectionTitle title="高级配置" color="#FF6B35" />
+<SectionTitle title="安全设置" color="#22c55e" />
+```
+
+## 在详情页中使用
+
+```vue
+<template>
+  <SectionTitle title="基本信息" />
+  <a-descriptions :column="2" :items="basicItems" />
+
+  <SectionTitle title="配置信息" style="margin-top: 24px;" />
+  <a-descriptions :column="2" :items="configItems" />
+
+  <SectionTitle title="操作记录" style="margin-top: 24px;" />
+  <DataTable :columns="columns" :data-source="logs" />
+</template>
 ```
 
 ## Props
