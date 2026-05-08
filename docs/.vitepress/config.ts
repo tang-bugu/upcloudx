@@ -43,6 +43,7 @@ export default defineConfig({
           { text: 'useConfirmAction', link: '/hooks/use-confirm-action' },
           { text: 'useModalForm', link: '/hooks/use-modal-form' },
           { text: 'useUtcTime', link: '/hooks/use-utc-time' },
+          { text: 'useDictData', link: '/hooks/use-dict-data' },
         ],
       },
     ],
