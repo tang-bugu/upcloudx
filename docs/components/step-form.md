@@ -83,17 +83,24 @@ function handleReset() {
 
 ```vue
 <script setup>
-import { ref } from 'vue';
+import { ref, reactive } from 'vue';
 import { StepForm } from '@upcloudx/ui';
 
 const currentStep = ref(0);
 const submitting = ref(false);
+const form = reactive({ name: '', domain: '', protocol: undefined });
 
 const steps = [
   { title: '基本信息' },
   { title: '配置' },
   { title: '确认' },
 ];
+
+async function handleSubmit() {
+  submitting.value = true;
+  await saveData(form);
+  submitting.value = false;
+}
 </script>
 
 <template>
@@ -105,9 +112,35 @@ const steps = [
     @prev="currentStep--"
     @submit="handleSubmit"
   >
-    <template #step-0>基本信息表单</template>
-    <template #step-1>配置表单</template>
-    <template #step-2>确认信息</template>
+    <template #step-0>
+      <a-form layout="vertical">
+        <a-form-item label="项目名称">
+          <a-input v-model:value="form.name" placeholder="请输入项目名称" />
+        </a-form-item>
+      </a-form>
+    </template>
+
+    <template #step-1>
+      <a-form layout="vertical">
+        <a-form-item label="域名">
+          <a-input v-model:value="form.domain" placeholder="请输入域名" />
+        </a-form-item>
+        <a-form-item label="协议">
+          <a-select v-model:value="form.protocol" placeholder="请选择协议">
+            <a-select-option value="http">HTTP</a-select-option>
+            <a-select-option value="https">HTTPS</a-select-option>
+          </a-select>
+        </a-form-item>
+      </a-form>
+    </template>
+
+    <template #step-2>
+      <a-descriptions :column="1" bordered>
+        <a-descriptions-item label="项目名称">{{ form.name }}</a-descriptions-item>
+        <a-descriptions-item label="域名">{{ form.domain }}</a-descriptions-item>
+        <a-descriptions-item label="协议">{{ form.protocol }}</a-descriptions-item>
+      </a-descriptions>
+    </template>
   </StepForm>
 </template>
 ```
