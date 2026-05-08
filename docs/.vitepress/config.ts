@@ -3,6 +3,7 @@ import { defineConfig } from 'vitepress';
 export default defineConfig({
   title: '@upcloudx/ui',
   description: '通用业务 UI 组件库 & Hooks',
+  base: '/upcloudx/',
   themeConfig: {
     nav: [{ text: '组件', link: '/components/page-header' }],
     sidebar: [
