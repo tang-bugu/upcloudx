@@ -38,6 +38,20 @@ import { CurrencyDisplay } from '../../src/index.ts';
 <CurrencyDisplay :amount="-50.5" :font-size="14" color="#ef4444" />
 ```
 
+## 自定义符号
+
+<div style="display:flex;gap:16px;margin:16px 0;">
+  <CurrencyDisplay :amount="1234.56" symbol="$" />
+  <CurrencyDisplay :amount="999" symbol="€" />
+  <CurrencyDisplay :amount="100" symbol="积分 " />
+</div>
+
+```vue
+<CurrencyDisplay :amount="1234.56" symbol="$" />
+<CurrencyDisplay :amount="999" symbol="€" />
+<CurrencyDisplay :amount="100" symbol="积分 " />
+```
+
 ## 正负值着色
 
 <div style="display:flex;gap:16px;margin:16px 0;">
@@ -60,6 +74,7 @@ import { CurrencyDisplay } from '../../src/index.ts';
 | currency | `string` | `'CNY'` | ISO 4217 货币代码 |
 | precision | `number` | `6` | 最多小数位数（不补零） |
 | showSymbol | `boolean` | `true` | 是否显示货币符号 |
+| symbol | `string` | — | 自定义符号（优先级高于 currency） |
 | colorize | `boolean` | `false` | 正负值着色 |
 | color | `string` | — | 自定义文本颜色（优先级高于 colorize） |
 | fontSize | `number \| string` | — | 文本大小（数字为 px） |
