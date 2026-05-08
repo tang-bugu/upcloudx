@@ -50,5 +50,10 @@ const displayImage = computed(() => imageMap[props.type ?? 'default']);
   align-items: center;
   justify-content: center;
   padding: 32px 0;
+  color: inherit;
+}
+.upx-empty-state :deep(.ant-empty-description) {
+  color: inherit;
+  opacity: 0.65;
 }
 </style>
