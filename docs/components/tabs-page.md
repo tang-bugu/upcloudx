@@ -76,10 +76,16 @@ const tabs = [
 
 ## Card 模式
 
-<TabsPage :tabs="[{ key: 'a', label: '概览' }, { key: 'b', label: '详情' }]" :card="true" active-key="a">
+<script setup>
+import { ref } from 'vue';
+import { TabsPage as TabsPageCard } from '../../src/index.ts';
+const cardTab = ref('a');
+</script>
+
+<TabsPageCard :tabs="[{ key: 'a', label: '概览' }, { key: 'b', label: '详情' }]" :card="true" v-model:activeKey="cardTab">
   <template #a><div style="padding:16px;">概览内容</div></template>
   <template #b><div style="padding:16px;">详情内容</div></template>
-</TabsPage>
+</TabsPageCard>
 
 ```vue
 <TabsPage
