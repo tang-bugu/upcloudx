@@ -1,13 +1,16 @@
 <script setup lang="ts">
 interface Props {
   title: string;
+  showBack?: boolean;
 }
 
 interface Emits {
   (e: 'back'): void;
 }
 
-defineProps<Props>();
+const props = withDefaults(defineProps<Props>(), {
+  showBack: true,
+});
 const emit = defineEmits<Emits>();
 
 function handleBack() {
@@ -17,12 +20,12 @@ function handleBack() {
 
 <template>
   <div class="upx-page-header">
-    <button type="button" class="upx-page-header__back" @click="handleBack">
+    <button v-if="props.showBack" type="button" class="upx-page-header__back" @click="handleBack">
       <svg width="20" height="20" fill="none" viewBox="0 0 20 20">
         <path d="M12.5 6L8.5 10L12.5 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
     </button>
-    <span class="upx-page-header__title" @click="handleBack">{{ title }}</span>
+    <span class="upx-page-header__title" :class="{ 'upx-page-header__title--clickable': props.showBack }" @click="props.showBack && handleBack()">{{ title }}</span>
     <slot />
   </div>
 </template>
@@ -49,12 +52,14 @@ function handleBack() {
 }
 .upx-page-header__title {
   margin-left: 8px;
-  cursor: pointer;
   font-size: 18px;
   font-weight: 500;
+}
+.upx-page-header__title--clickable {
+  cursor: pointer;
   transition: color 0.2s;
 }
-.upx-page-header__title:hover {
+.upx-page-header__title--clickable:hover {
   color: #1664ff;
 }
 </style>
