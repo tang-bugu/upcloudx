@@ -16,16 +16,13 @@ pnpm add vue ant-design-vue dayjs
 
 ## 使用
 
-```ts
-// main.ts 引入样式
-import '@upcloudx/ui/style.css';
-```
-
 ```vue
 <script setup lang="ts">
 import { DataTable, SearchBar, StatusTag, useServerPagination } from '@upcloudx/ui';
 </script>
 ```
+
+样式随组件自动注入，无需手动引入 CSS 文件。
 
 ## 组件
 

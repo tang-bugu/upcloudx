@@ -1,3 +1,5 @@
+import './styles/index.css';
+
 // ─── Components ──────────────────────────────────────────────────────────────
 export { default as PageHeader } from './components/page-header/PageHeader.vue';
 export { default as SectionTitle } from './components/section-title/SectionTitle.vue';
