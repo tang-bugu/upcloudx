@@ -31,7 +31,7 @@ const props = withDefaults(defineProps<Props>(), {
 .upx-section-title__text {
   font-size: 14px;
   font-weight: 500;
-  color: #111824;
+  color: inherit;
   margin: 0;
 }
 </style>

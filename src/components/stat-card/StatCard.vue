@@ -38,14 +38,14 @@ const props = withDefaults(defineProps<StatCardProps>(), {
 
 <style scoped>
 .upx-stat-card {
-  background: #fff;
+  background: var(--upx-stat-card-bg, #fff);
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 .upx-stat-card__label {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--upx-stat-card-label-color, rgba(0, 0, 0, 0.45));
   margin-bottom: 8px;
 }
 .upx-stat-card__value {
@@ -59,7 +59,7 @@ const props = withDefaults(defineProps<StatCardProps>(), {
 }
 .upx-stat-card__unit {
   font-size: 14px;
-  color: #9ca3af;
+  color: var(--upx-stat-card-unit-color, rgba(0, 0, 0, 0.35));
 }
 .upx-stat-card__trend {
   margin-top: 8px;
