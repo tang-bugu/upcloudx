@@ -41,3 +41,23 @@ export type { StepItem } from './components/step-form/types';
 export type { TabItem } from './components/tabs-page/types';
 export type { ConfirmOptions } from './composables/use-confirm';
 export type * from './hooks/types';
+
+
+// ─── OAuth2 ──────────────────────────────────────────────────────────────────
+export { createOAuth2Api } from './oauth2/api';
+export type { OAuth2Api } from './oauth2/api';
+export { createOAuth2Manager } from './oauth2/manager';
+export { default as OAuth2Callback } from './oauth2/OAuth2Callback.vue';
+export { createPreAuth } from './oauth2/preauth';
+export { createTokenManager, generateState } from './oauth2/token';
+export type {
+  CheckAuthResponse,
+  NormalizedUserInfo,
+  OAuth2Config,
+  OAuth2StoreOptions,
+  PreAuthConfig,
+  PreAuthInstance,
+  PreAuthTokenResponse,
+  TokenData,
+  UserInfoData,
+} from './oauth2/types';
