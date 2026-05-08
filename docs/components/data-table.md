@@ -26,6 +26,41 @@ const dataSource = [
   </template>
 </DataTable>
 
+```vue
+<script setup>
+import { DataTable, StatusTag, ActionButtons } from '@upcloudx/ui';
+
+const columns = [
+  { title: '域名', dataIndex: 'domain', key: 'domain' },
+  { title: '状态', dataIndex: 'status', key: 'status' },
+  { title: '操作', key: 'action', width: 150 },
+];
+</script>
+
+<template>
+  <DataTable
+    :columns="columns"
+    :data-source="list"
+    :loading="loading"
+    :total="total"
+    :page-num="pageNum"
+    :page-size="pageSize"
+    @page-change="({ pageNum, pageSize }) => fetchList(pageNum, pageSize)"
+  >
+    <template #bodyCell="{ column, record }">
+      <StatusTag v-if="column.key === 'status'" :status="record.status" preset="domain" />
+      <ActionButtons
+        v-if="column.key === 'action'"
+        :actions="[
+          { label: '编辑', onClick: () => handleEdit(record) },
+          { label: '删除', onClick: () => handleDelete(record), danger: true },
+        ]"
+      />
+    </template>
+  </DataTable>
+</template>
+```
+
 ## Props
 
 | 属性 | 类型 | 默认值 | 说明 |
@@ -42,4 +77,4 @@ const dataSource = [
 
 | 事件 | 参数 | 说明 |
 |------|------|------|
-| page-change | `{ pageNum, pageSize }` | 分页变化 |
+| page-change | `{ pageNum: number; pageSize: number }` | 分页变化 |
