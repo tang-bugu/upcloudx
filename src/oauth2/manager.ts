@@ -11,7 +11,7 @@ export function createOAuth2Manager(options: OAuth2StoreOptions) {
     defaultHomePath = '/',
     getOAuth2Config,
     getRequestClient,
-    getRouter,
+    onRedirect,
     tokenKey,
     onUserInfoFetched,
     onLogout,
@@ -101,7 +101,8 @@ export function createOAuth2Manager(options: OAuth2StoreOptions) {
         await fetchUserInfo(tokenData.access_token);
         const redirect = localStorage.getItem('redirect_after_login') || '/';
         localStorage.removeItem('redirect_after_login');
-        await getRouter().replace(redirect);
+        if (onRedirect) onRedirect(redirect);
+        else window.location.href = redirect;
       } else {
         throw new Error('获取访问令牌失败：响应数据格式不正确');
       }

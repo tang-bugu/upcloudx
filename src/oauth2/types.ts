@@ -50,17 +50,17 @@ export interface OAuth2StoreOptions {
   getOAuth2Config: () => OAuth2Config;
   /** 获取请求客户端 */
   getRequestClient: () => any;
-  /** 获取 Router 实例 */
-  getRouter: () => any;
+  /** 路由跳转回调（替代 vue-router 依赖），默认使用 window.location.href */
+  onRedirect?: (path: string) => void;
   /** token 存储 key，默认 'oauth2_access_token' */
   tokenKey?: string;
   /** 用户信息获取成功后的回调（替代 useUserStore().setUserInfo） */
   onUserInfoFetched: (userInfo: NormalizedUserInfo) => void;
   /** 登出后的回调（替代 resetAllStores） */
   onLogout: () => void;
-  /** 登录过期状态重置回调（可选，替代 useAccessStore().setLoginExpired） */
+  /** 登录过期状态重置回调（可选） */
   onLoginExpired?: () => void;
-  /** 额外的登出清理（如重置 tenant store） */
+  /** 额外的登出清理 */
   onAfterLogout?: () => Promise<void> | void;
 }
 

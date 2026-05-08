@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { onMounted, ref } from 'vue';
-import { useRoute, useRouter } from 'vue-router';
 
 defineOptions({ name: 'OAuth2Callback' });
 
@@ -12,8 +11,6 @@ const props = defineProps<{
   };
 }>();
 
-const route = useRoute();
-const router = useRouter();
 const loading = ref(true);
 const error = ref('');
 
@@ -21,14 +18,14 @@ onMounted(async () => {
   const existingToken = props.authStore.getAccessToken();
   if (existingToken) {
     loading.value = false;
-    const redirect = localStorage.getItem('redirect_after_login') || '/';
-    localStorage.removeItem('redirect_after_login');
-    await router.replace(redirect);
+    // token 已存在，handleOAuth2Callback 内部会处理跳转
     return;
   }
 
-  const code = route.query.code as string;
-  const state = route.query.state as string;
+  const url = new URL(window.location.href);
+  const code = url.searchParams.get('code') ?? '';
+  const state = url.searchParams.get('state') ?? '';
+
   if (!code) {
     error.value = '缺少授权码参数';
     loading.value = false;
