@@ -5,7 +5,7 @@ export default defineConfig({
   description: '通用业务 UI 组件库 & Hooks',
   base: '/upcloudx/',
   themeConfig: {
-    nav: [{ text: '组件', link: '/components/page-header' }],
+    nav: [{ text: '组件', link: '/components/page-header' }, { text: 'OAuth2', link: '/oauth2' }],
     sidebar: [
       {
         text: '通用组件',
@@ -38,8 +38,7 @@ export default defineConfig({
       },
       {
         text: 'Hooks',
-        items: [
-          { text: 'useServerPagination', link: '/hooks/use-server-pagination' },
+        items: [          { text: 'useServerPagination', link: '/hooks/use-server-pagination' },
           { text: 'useListSearch', link: '/hooks/use-list-search' },
           { text: 'useConfirmAction', link: '/hooks/use-confirm-action' },
           { text: 'useModalForm', link: '/hooks/use-modal-form' },
@@ -50,6 +49,12 @@ export default defineConfig({
           { text: 'useUserOptions', link: '/hooks/use-user-options' },
           { text: 'useCustomerOptions', link: '/hooks/use-customer-options' },
           { text: 'useDomainOptions', link: '/hooks/use-domain-options' },
+        ],
+      },
+      {
+        text: 'OAuth2',
+        items: [
+          { text: '快速开始', link: '/oauth2' },
         ],
       },
     ],
