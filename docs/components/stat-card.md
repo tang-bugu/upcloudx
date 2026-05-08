@@ -14,11 +14,33 @@ import { StatCard } from '../../src/index.ts';
   <StatCard label="异常告警" :value="3" unit="条" color="#ef4444" :trend="{ value: 8.2, direction: 'down' }" />
 </div>
 
+```vue
+<StatCard label="总域名数" :value="1024" unit="个" color="#1664FF" />
+<StatCard
+  label="今日流量"
+  :value="256"
+  unit="GB"
+  color="#22c55e"
+  :trend="{ value: 12.5, direction: 'up' }"
+/>
+<StatCard
+  label="异常告警"
+  :value="3"
+  unit="条"
+  color="#ef4444"
+  :trend="{ value: 8.2, direction: 'down' }"
+/>
+```
+
 ## 加载状态
 
 <div style="max-width:300px;margin:16px 0;">
   <StatCard label="加载中" :value="0" :loading="true" />
 </div>
+
+```vue
+<StatCard label="加载中" :value="0" :loading="true" />
+```
 
 ## Props
 
@@ -29,4 +51,4 @@ import { StatCard } from '../../src/index.ts';
 | unit | `string` | — | 数值单位 |
 | color | `string` | — | 主题颜色 |
 | loading | `boolean` | `false` | 骨架屏 |
-| trend | `{ value, direction }` | — | 趋势信息 |
+| trend | `{ value: number; direction: 'up' \| 'down' }` | — | 趋势信息 |
