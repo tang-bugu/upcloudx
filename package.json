@@ -1,0 +1,48 @@
+{
+  "name": "@upcloudx/ui",
+  "version": "0.1.0",
+  "description": "UpCloudX 通用业务 UI 组件库 & Hooks",
+  "type": "module",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": ["dist"],
+  "sideEffects": ["**/*.css"],
+  "scripts": {
+    "build": "vite build",
+    "dev": "vite build --watch"
+  },
+  "peerDependencies": {
+    "ant-design-vue": ">=4.0.0",
+    "dayjs": ">=1.11.0",
+    "vue": ">=3.5.0"
+  },
+  "dependencies": {
+    "@vueuse/core": "13.9.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "5.2.4",
+    "ant-design-vue": "4.2.6",
+    "dayjs": "1.11.18",
+    "typescript": "5.9.3",
+    "vite": "6.4.1",
+    "vite-plugin-dts": "4.5.4",
+    "vue": "3.5.22"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tang-bugu/upcloudx.git"
+  },
+  "license": "MIT"
+}
