@@ -27,15 +27,15 @@ import { CurrencyDisplay } from '../../src/index.ts';
 ## 自定义大小和颜色
 
 <div style="display:flex;gap:16px;align-items:baseline;margin:16px 0;">
-  <CurrencyDisplay :amount="12345.67" :font-size="24" color="#1664FF" />
-  <CurrencyDisplay :amount="999" :font-size="18" color="#22c55e" />
-  <CurrencyDisplay :amount="-50.5" :font-size="14" color="#ef4444" />
+  <CurrencyDisplay :amount="12345.67" font-size="24px" color="#1664FF" />
+  <CurrencyDisplay :amount="999" font-size="18px" color="#22c55e" />
+  <CurrencyDisplay :amount="-50.5" font-size="14px" color="#ef4444" />
 </div>
 
 ```vue
-<CurrencyDisplay :amount="12345.67" :font-size="24" color="#1664FF" />
-<CurrencyDisplay :amount="999" :font-size="18" color="#22c55e" />
-<CurrencyDisplay :amount="-50.5" :font-size="14" color="#ef4444" />
+<CurrencyDisplay :amount="12345.67" font-size="24px" color="#1664FF" />
+<CurrencyDisplay :amount="999" font-size="18px" color="#22c55e" />
+<CurrencyDisplay :amount="-50.5" font-size="14px" color="#ef4444" />
 ```
 
 ## 自定义符号
