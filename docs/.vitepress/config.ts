@@ -44,6 +44,7 @@ export default defineConfig({
           { text: 'useModalForm', link: '/hooks/use-modal-form' },
           { text: 'useUtcTime', link: '/hooks/use-utc-time' },
           { text: 'useDictData', link: '/hooks/use-dict-data' },
+          { text: 'useStatusMapper', link: '/hooks/use-status-mapper' },
         ],
       },
     ],
