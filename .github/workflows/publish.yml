@@ -18,11 +18,27 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          registry-url: https://registry.npmjs.org/
 
       - run: pnpm install --no-frozen-lockfile
 
       - run: pnpm build
 
-      - run: |
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" > ~/.npmrc
-          npm publish --access public --registry https://registry.npmjs.org/
+      - name: Verify token exists
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "ERROR: NODE_AUTH_TOKEN is empty!"
+            exit 1
+          fi
+          echo "Token length: ${#NODE_AUTH_TOKEN}"
+          cat $NPM_CONFIG_USERCONFIG || true
+          cat ~/.npmrc || true
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish
+        run: |
+          cat $NPM_CONFIG_USERCONFIG || true
+          npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
