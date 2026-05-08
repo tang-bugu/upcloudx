@@ -24,21 +24,6 @@ jobs:
 
       - run: pnpm build
 
-      - name: Verify token exists
-        run: |
-          if [ -z "$NODE_AUTH_TOKEN" ]; then
-            echo "ERROR: NODE_AUTH_TOKEN is empty!"
-            exit 1
-          fi
-          echo "Token length: ${#NODE_AUTH_TOKEN}"
-          cat $NPM_CONFIG_USERCONFIG || true
-          cat ~/.npmrc || true
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Publish
-        run: |
-          cat $NPM_CONFIG_USERCONFIG || true
-          npm publish --access public
+      - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
