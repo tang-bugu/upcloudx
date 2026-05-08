@@ -52,9 +52,24 @@ const tabs = [
 
 <template>
   <TabsPage :tabs="tabs" v-model:activeKey="activeTab">
-    <template #log>日志下载内容</template>
-    <template #prefetch>刷新预取内容</template>
-    <template #config>配置管理内容</template>
+    <template #log>
+      <div style="padding:16px;">
+        <p>当前标签：日志下载</p>
+        <Button type="primary" size="small">下载日志</Button>
+      </div>
+    </template>
+    <template #prefetch>
+      <div style="padding:16px;">
+        <p>当前标签：刷新预取</p>
+        <Button size="small">提交刷新任务</Button>
+      </div>
+    </template>
+    <template #config>
+      <div style="padding:16px;">
+        <p>当前标签：配置管理</p>
+        <Button size="small">编辑配置</Button>
+      </div>
+    </template>
   </TabsPage>
 </template>
 ```
@@ -67,8 +82,13 @@ const tabs = [
 </TabsPage>
 
 ```vue
-<TabsPage :tabs="tabs" :card="true" v-model:activeKey="activeTab">
-  ...
+<TabsPage
+  :tabs="[{ key: 'a', label: '概览' }, { key: 'b', label: '详情' }]"
+  :card="true"
+  v-model:activeKey="activeTab"
+>
+  <template #a><div style="padding:16px;">概览内容</div></template>
+  <template #b><div style="padding:16px;">详情内容</div></template>
 </TabsPage>
 ```
 
