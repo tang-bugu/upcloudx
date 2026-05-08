@@ -12,8 +12,8 @@ const props = withDefaults(defineProps<CurrencyDisplayProps>(), {
   symbol: undefined,
   colorize: false,
   loading: false,
-  fontSize: undefined,
-  color: undefined,
+  textSize: undefined,
+  textColor: undefined,
 });
 
 const formattedAmount = computed<string>(() => {
@@ -32,22 +32,19 @@ const formattedAmount = computed<string>(() => {
       ...options,
     }).format(props.amount);
   }
-  return new Intl.NumberFormat(undefined, {
-    style: 'decimal',
-    ...options,
-  }).format(props.amount);
+  return new Intl.NumberFormat(undefined, { style: 'decimal', ...options }).format(props.amount);
 });
 
 const spanStyle = computed(() => {
   const style: Record<string, string> = {};
-  if (props.color) {
-    style.color = props.color;
+  if (props.textColor) {
+    style.color = props.textColor;
   } else if (props.colorize) {
     if (props.amount > 0) style.color = '#16a34a';
     else if (props.amount < 0) style.color = '#ef4444';
   }
-  if (props.fontSize) {
-    style.fontSize = typeof props.fontSize === 'number' ? `${props.fontSize}px` : props.fontSize;
+  if (props.textSize) {
+    style.fontSize = typeof props.textSize === 'number' ? `${props.textSize}px` : props.textSize;
   }
   return style;
 });

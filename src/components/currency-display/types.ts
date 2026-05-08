@@ -6,6 +6,6 @@ export type CurrencyDisplayProps = {
   symbol?: string;
   colorize?: boolean;
   loading?: boolean;
-  fontSize?: number | string;
-  color?: string;
+  textSize?: number | string;
+  textColor?: string;
 };

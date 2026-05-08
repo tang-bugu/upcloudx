@@ -27,15 +27,15 @@ import { CurrencyDisplay } from '../../src/index.ts';
 ## 自定义大小和颜色
 
 <div style="display:flex;gap:16px;align-items:baseline;margin:16px 0;">
-  <CurrencyDisplay :amount="12345.67" :font-size="'24px'" :color="'#1664FF'" />
-  <CurrencyDisplay :amount="999" :font-size="'18px'" :color="'#22c55e'" />
-  <CurrencyDisplay :amount="-50.5" :font-size="'14px'" :color="'#ef4444'" />
+  <CurrencyDisplay :amount="12345.67" text-size="24px" text-color="#1664FF" />
+  <CurrencyDisplay :amount="999" text-size="18px" text-color="#22c55e" />
+  <CurrencyDisplay :amount="-50.5" text-size="14px" text-color="#ef4444" />
 </div>
 
 ```vue
-<CurrencyDisplay :amount="12345.67" font-size="24px" color="#1664FF" />
-<CurrencyDisplay :amount="999" font-size="18px" color="#22c55e" />
-<CurrencyDisplay :amount="-50.5" font-size="14px" color="#ef4444" />
+<CurrencyDisplay :amount="12345.67" text-size="24px" text-color="#1664FF" />
+<CurrencyDisplay :amount="999" text-size="18px" text-color="#22c55e" />
+<CurrencyDisplay :amount="-50.5" text-size="14px" text-color="#ef4444" />
 ```
 
 ## 自定义符号
@@ -76,6 +76,6 @@ import { CurrencyDisplay } from '../../src/index.ts';
 | showSymbol | `boolean` | `true` | 是否显示货币符号 |
 | symbol | `string` | — | 自定义符号（优先级高于 currency） |
 | colorize | `boolean` | `false` | 正负值着色 |
-| color | `string` | — | 自定义文本颜色（优先级高于 colorize） |
-| fontSize | `number \| string` | — | 文本大小（数字为 px） |
+| textColor | `string` | — | 自定义文本颜色（优先级高于 colorize） |
+| textSize | `number \| string` | — | 文本大小（数字为 px） |
 | loading | `boolean` | `false` | 骨架屏占位 |
