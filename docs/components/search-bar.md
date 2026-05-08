@@ -8,7 +8,7 @@
 import { SearchBar } from '../../src/index.ts';
 const fields = [
   { key: 'name', label: '名称', type: 'input', placeholder: '请输入名称' },
-  { key: 'status', label: '状态', type: 'select', options: [{ label: '启用', value: 1 }, { label: '停用', value: 0 }] },
+  { key: 'status', label: '状态', type: 'select', options: [{ label: '启用', value: 1 }, { label: '停用', value: 0 }], width: 120 },
 ];
 </script>
 
