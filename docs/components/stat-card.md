@@ -5,7 +5,7 @@
 ## 基础用法
 
 <script setup>
-import { StatCard } from '../../src/index.ts';
+import { StatCard, CurrencyDisplay } from '../../src/index.ts';
 </script>
 
 <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:16px 0;">
@@ -42,6 +42,24 @@ import { StatCard } from '../../src/index.ts';
 <StatCard label="加载中" :value="0" :loading="true" />
 ```
 
+## 自定义 value 插槽
+
+<div style="max-width:300px;margin:16px 0;">
+  <StatCard label="账户余额">
+    <template #value>
+      <CurrencyDisplay :amount="12345.67" :colorize="true" />
+    </template>
+  </StatCard>
+</div>
+
+```vue
+<StatCard label="账户余额">
+  <template #value>
+    <CurrencyDisplay :amount="12345.67" :colorize="true" />
+  </template>
+</StatCard>
+```
+
 ## Props
 
 | 属性 | 类型 | 默认值 | 说明 |
@@ -52,3 +70,9 @@ import { StatCard } from '../../src/index.ts';
 | color | `string` | — | 主题颜色 |
 | loading | `boolean` | `false` | 骨架屏 |
 | trend | `{ value: number; direction: 'up' \| 'down' }` | — | 趋势信息 |
+
+## Slots
+
+| 插槽 | 说明 |
+|------|------|
+| value | 自定义数值区域内容 |
