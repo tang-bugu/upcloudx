@@ -44,7 +44,7 @@ function handleBack() {
   border: none;
   background: transparent;
   padding: 0;
-  color: #222;
+  color: inherit;
   transition: color 0.2s;
 }
 .upx-page-header__back:hover {
@@ -54,6 +54,7 @@ function handleBack() {
   margin-left: 8px;
   font-size: 18px;
   font-weight: 500;
+  color: inherit;
 }
 .upx-page-header__title--clickable {
   cursor: pointer;
