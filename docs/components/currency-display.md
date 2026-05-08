@@ -17,24 +17,25 @@ import { CurrencyDisplay } from '../../src/index.ts';
 </div>
 
 ```vue
-<CurrencyDisplay :amount="1234.56" />
-<CurrencyDisplay :amount="999.99" currency="USD" />
-<CurrencyDisplay :amount="0.123456" />  <!-- ¥0.123456 -->
-<CurrencyDisplay :amount="100" />        <!-- ¥100 -->
+<div>默认（CNY）：<CurrencyDisplay :amount="1234.56" /></div>
+<div>美元：<CurrencyDisplay :amount="999.99" currency="USD" /></div>
+<div>隐藏符号：<CurrencyDisplay :amount="1234.56" :show-symbol="false" /></div>
+<div>多位小数：<CurrencyDisplay :amount="0.123456" /></div>
+<div>整数不补零：<CurrencyDisplay :amount="100" /></div>
 ```
 
 ## 自定义大小和颜色
 
 <div style="display:flex;gap:16px;align-items:baseline;margin:16px 0;">
-  <CurrencyDisplay :amount="12345.67" font-size="24px" color="#1664FF" />
-  <CurrencyDisplay :amount="999" font-size="18px" color="#22c55e" />
-  <CurrencyDisplay :amount="-50.5" font-size="14px" color="#ef4444" />
+  <CurrencyDisplay :amount="12345.67" :font-size="24" color="#1664FF" />
+  <CurrencyDisplay :amount="999" :font-size="18" color="#22c55e" />
+  <CurrencyDisplay :amount="-50.5" :font-size="14" color="#ef4444" />
 </div>
 
 ```vue
-<CurrencyDisplay :amount="12345.67" font-size="24px" color="#1664FF" />
-<CurrencyDisplay :amount="999" font-size="18px" color="#22c55e" />
-<CurrencyDisplay :amount="-50.5" font-size="14px" color="#ef4444" />
+<CurrencyDisplay :amount="12345.67" :font-size="24" color="#1664FF" />
+<CurrencyDisplay :amount="999" :font-size="18" color="#22c55e" />
+<CurrencyDisplay :amount="-50.5" :font-size="14" color="#ef4444" />
 ```
 
 ## 正负值着色
@@ -46,8 +47,9 @@ import { CurrencyDisplay } from '../../src/index.ts';
 </div>
 
 ```vue
-<CurrencyDisplay :amount="500" :colorize="true" />
-<CurrencyDisplay :amount="-99.99" :colorize="true" />
+<span>收入：<CurrencyDisplay :amount="500" :colorize="true" /></span>
+<span>支出：<CurrencyDisplay :amount="-99.99" :colorize="true" /></span>
+<span>零值：<CurrencyDisplay :amount="0" :colorize="true" /></span>
 ```
 
 ## Props
