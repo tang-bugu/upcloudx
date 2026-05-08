@@ -1,0 +1,230 @@
+# @upcloudx/ui
+
+> 基于 Vue 3 + Ant Design Vue 的通用业务 UI 组件库 & Hooks，适用于中后台管理系统。
+
+- npm: https://www.npmjs.com/package/@upcloudx/ui
+- 文档: https://tang-bugu.github.io/upcloudx/
+- 仓库: https://github.com/tang-bugu/upcloudx
+
+## 安装
+
+```bash
+pnpm add @upcloudx/ui
+```
+
+peerDependencies: `vue >= 3.5`, `ant-design-vue >= 4.0`, `dayjs >= 1.11`
+
+CSS 自动注入，无需手动引入样式文件。
+
+## 组件
+
+### PageHeader — 带返回按钮的页面标题
+```vue
+<PageHeader title="域名管理" :show-back="true" @back="router.back()" />
+```
+Props: `title: string`, `showBack?: boolean`（默认 true）
+
+### SectionTitle — 带左侧色块的分区标题
+```vue
+<SectionTitle title="基本信息" color="#1664FF" />
+```
+Props: `title: string`, `color?: string`（默认 #1664FF）
+
+### StatusTag — 业务状态标签
+```vue
+<!-- 直接指定（优先级最高） -->
+<StatusTag text="已上线" color="success" />
+<!-- 内置预设：domain / certificate / project -->
+<StatusTag :status="4" preset="domain" />
+<!-- 自定义映射 -->
+<StatusTag :status="0" :status-map="{ 0: { text: '待审核', color: 'processing' } }" />
+```
+Props: `status?`, `text?`, `color?`, `statusMap?`, `preset?`, `size?: 'default'|'small'`
+
+### ActionButtons — 表格操作列按钮组
+```vue
+<ActionButtons :actions="[{ label: '编辑', onClick: handleEdit }, { label: '删除', onClick: handleDelete, danger: true }]" :max-visible="2" />
+```
+Props: `actions: ActionItem[]`, `maxVisible?: number`
+
+### CopyText — 一键复制文本
+```vue
+<CopyText text="example.com" max-width="200px" success-message="已复制" />
+```
+Props: `text: string`, `maxWidth?: string`, `successMessage?: string`
+
+### EmptyState — 空状态占位
+```vue
+<EmptyState type="search" description="无结果">
+  <template #image><!-- 自定义图标 --></template>
+  <Button @click="reload">重试</Button>
+</EmptyState>
+```
+Props: `type?: 'default'|'search'|'error'`, `description?: string`
+
+### DataTable — 业务数据表格（内置分页）
+```vue
+<DataTable :columns="columns" :data-source="list" :loading="loading" :total="total" :page-num="currentPage" :page-size="pageSize" @page-change="({ pageNum, pageSize }) => loadData(pageNum, pageSize)">
+  <template #bodyCell="{ column, record }">
+    <StatusTag v-if="column.key === 'status'" :status="record.status" preset="domain" />
+  </template>
+</DataTable>
+```
+
+### SearchBar — 列表搜索栏
+```vue
+<SearchBar :fields="[{ key: 'name', label: '名称', type: 'input', width: 180 }, { key: 'status', label: '状态', type: 'select', options: [...], width: 120 }, { key: 'range', label: '时间', type: 'date-range' }]" @search="handleSearch" @reset="handleReset" />
+```
+field.type: `'input' | 'select' | 'date-range' | 'date-picker'`
+
+### DetailCard — 只读/编辑切换卡片
+```vue
+<DetailCard title="基本信息" :editable="true" :is-editing="isEditing" :save-loading="saving" @edit="isEditing=true" @save="handleSave" @cancel="isEditing=false">
+  <template #view>只读内容</template>
+  <template #edit>编辑表单</template>
+</DetailCard>
+```
+
+### FormModal — 表单弹窗
+```vue
+<FormModal v-model:open="visible" title="新增" :loading="submitting" @confirm="handleSubmit">
+  <a-form>...</a-form>
+</FormModal>
+```
+
+### StepForm — 多步骤向导表单
+```vue
+<StepForm :steps="[{ title: '基本信息' }, { title: '配置' }, { title: '确认' }]" :current="step" @next="step++" @prev="step--" @submit="handleSubmit">
+  <template #step-0>...</template>
+  <template #step-1>...</template>
+  <template #step-2>...</template>
+</StepForm>
+```
+
+### StatCard — 统计数据卡片
+```vue
+<StatCard label="总域名数" :value="1024" unit="个" color="#1664FF" :trend="{ value: 12.5, direction: 'up' }" :loading="false">
+  <template #value><CurrencyDisplay :amount="balance" /></template>
+</StatCard>
+```
+
+### CurrencyDisplay — 货币格式化展示
+```vue
+<CurrencyDisplay :amount="1234.56" currency="CNY" :precision="6" :show-symbol="true" symbol="$" :colorize="true" text-size="24px" text-color="#1664FF" />
+```
+Props: `amount`, `currency?`(CNY), `precision?`(6), `showSymbol?`, `symbol?`, `colorize?`, `textSize?`, `textColor?`, `loading?`
+
+### TabsPage — Tab 切换页面容器
+```vue
+<TabsPage :tabs="[{ key: 'log', label: '日志' }, { key: 'config', label: '配置' }]" v-model:activeKey="activeTab" :card="true" session-storage-key="my-tab">
+  <template #log>...</template>
+  <template #config>...</template>
+</TabsPage>
+```
+
+## Hooks
+
+### useServerPagination — 服务端分页
+```ts
+const { currentPage, pageSize, total, paginationConfig, resetPage, setTotal } = useServerPagination({ loadFn: loadData, defaultPageSize: 10 });
+// 数据加载后：setTotal(res.total)
+// 搜索时：resetPage()
+```
+
+### useListSearch — 搜索/重置联动
+```ts
+const { handleSearch, handleReset } = useListSearch({ formRef, resetPage, loadFn: loadData, extraResetFn?: () => {} });
+// handleSearch: resetPage() → loadFn()
+// handleReset: resetFields() → extraResetFn?() → resetPage() → loadFn()
+```
+
+### useConfirmAction — 二次确认弹窗
+```ts
+const { confirmDelete, confirmAction } = useConfirmAction();
+confirmDelete({ title: '删除确认', content: '确定删除吗？', onOk: async () => { await deleteApi(id); } });
+```
+
+### useModalForm — 表单弹窗生命周期
+```ts
+const { handleCancel, handleSubmit } = useModalForm({ formRef, open, onOpen: () => { /* 回显 */ }, onClose: () => { /* 清理 */ }, onSubmit: async () => { await saveApi(); open.value = false; } });
+```
+
+### useStatusMapper — 状态码映射
+```ts
+const { getStatusLabel, getStatusColor, fromDictList } = useStatusMapper({ 0: { label: '禁用', color: 'default' }, 1: { label: '启用', color: 'success' } });
+getStatusLabel(1); // '启用'
+fromDictList(dictList, { '0': 'warning', '1': 'success' }); // 从字典数据构建
+```
+
+### useProviderType — 厂商类型格式化
+```ts
+const { formatProviderType } = useProviderType({ azure: 'Azure' }); // 可扩展默认映射
+formatProviderType('aws'); // 'AWS'
+```
+
+### useUtcTime — UTC 时间格式化
+```ts
+const { formatUtcTime } = useUtcTime();
+formatUtcTime('2024-01-15T10:30:00Z'); // '2024-01-15 18:30:00'
+formatUtcTime(null); // '-'
+```
+
+### useDictData — 字典数据加载
+```ts
+const { list, loading, load } = useDictData(getProviderTypeDictApi, { immediate: true });
+// 替代：ref([]) + ref(false) + try/finally + onMounted 样板代码
+```
+
+### useUserOptions / useCustomerOptions / useDomainOptions — Select 选项
+```ts
+const { options, loading, load } = useUserOptions({ fetchFn: getUserListApi, immediate: true });
+const { options, customerMap, getCustomerName } = useCustomerOptions({ fetchFn: getCustomerListApi, immediate: true });
+const { options, load } = useDomainOptions({ fetchFn: getDomainListApi, valueKey: 'id', params: { customerId: 1 } });
+```
+
+### usePagination — 前端分页
+```ts
+const { paginationList, total, setCurrentPage, setPageSize } = usePagination(list, 10);
+```
+
+## OAuth2
+
+### createOAuth2Manager — 核心流程管理器
+```ts
+import { createOAuth2Manager } from '@upcloudx/ui';
+
+const oauth2 = createOAuth2Manager({
+  getOAuth2Config: () => ({ authorizeUrl, clientId, redirectUri }),
+  getRequestClient: () => requestClient,
+  tokenKey: 'my_app_token',           // 可选，默认 'oauth2_access_token'
+  onRedirect: (path) => router.replace(path), // 可选，默认 window.location.href
+  onUserInfoFetched: (userInfo) => userStore.setUserInfo(userInfo),
+  onLogout: () => { userStore.$reset(); },
+  onAfterLogout: async () => { tenantStore.$reset(); },
+});
+
+oauth2.getAccessToken();
+oauth2.smartOAuth2Flow();   // 智能授权（检查状态 → 换 token 或跳转授权页）
+oauth2.startOAuth2Flow();   // 直接跳转授权页
+oauth2.logout();
+oauth2.authSSOLogin({ token }); // SSO 直接登录
+```
+
+### createPreAuth — SPA 启动前认证（无 Vue 依赖）
+```ts
+// main.ts，在 createApp 之前调用
+const preAuth = createPreAuth({ apiUrl, authorizeUrl, clientId, redirectUri, tokenKey });
+const ok = await preAuth.preAuth();
+if (ok) createApp(App).mount('#app');
+```
+
+### OAuth2Callback — 回调页面组件
+```ts
+// router.ts
+{ path: '/oauth2/callback', component: OAuth2Callback, props: { authStore: oauth2 } }
+```
+
+### NormalizedUserInfo 类型
+```ts
+{ avatar, realName, username, userId, roles, homePath, deptId?, deptName?, email?, phone?, token, ...原始字段 }
+```
