@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 
-import { Skeleton } from 'ant-design-vue';
-
 import type { CurrencyDisplayProps } from './types';
 
 const props = withDefaults(defineProps<CurrencyDisplayProps>(), {
@@ -17,40 +15,34 @@ const props = withDefaults(defineProps<CurrencyDisplayProps>(), {
 });
 
 const formattedAmount = computed<string>(() => {
-  const options = {
-    minimumFractionDigits: 0,
-    maximumFractionDigits: props.precision,
-  };
+  const options = { minimumFractionDigits: 0, maximumFractionDigits: props.precision };
   if (props.symbol) {
-    const num = new Intl.NumberFormat(undefined, { style: 'decimal', ...options }).format(props.amount);
-    return `${props.symbol}${num}`;
+    return `${props.symbol}${new Intl.NumberFormat(undefined, { style: 'decimal', ...options }).format(props.amount)}`;
   }
   if (props.showSymbol) {
-    return new Intl.NumberFormat(undefined, {
-      style: 'currency',
-      currency: props.currency,
-      ...options,
-    }).format(props.amount);
+    return new Intl.NumberFormat(undefined, { style: 'currency', currency: props.currency, ...options }).format(props.amount);
   }
   return new Intl.NumberFormat(undefined, { style: 'decimal', ...options }).format(props.amount);
 });
 
 const spanStyle = computed(() => {
   const style: Record<string, string> = {};
-  if (props.textColor) {
-    style.color = props.textColor;
-  } else if (props.colorize) {
+  if (props.textColor) style.color = props.textColor;
+  else if (props.colorize) {
     if (props.amount > 0) style.color = '#16a34a';
     else if (props.amount < 0) style.color = '#ef4444';
   }
-  if (props.textSize) {
-    style.fontSize = typeof props.textSize === 'number' ? `${props.textSize}px` : props.textSize;
-  }
+  if (props.textSize) style.fontSize = typeof props.textSize === 'number' ? `${props.textSize}px` : props.textSize;
   return style;
 });
 </script>
 
 <template>
-  <Skeleton.Input v-if="props.loading" size="small" :active="true" />
+  <span v-if="props.loading" class="upx-skeleton-inline"></span>
   <span v-else :style="spanStyle">{{ formattedAmount }}</span>
 </template>
+
+<style scoped>
+.upx-skeleton-inline { display: inline-block; width: 80px; height: 1em; border-radius: 4px; vertical-align: middle; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: upx-shimmer 1.5s infinite; }
+@keyframes upx-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+</style>

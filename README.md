@@ -1,6 +1,6 @@
 # @upcloudx/ui
 
-UpCloudX 通用业务 UI 组件库 & Hooks，基于 Vue 3 + Ant Design Vue，适用于中后台管理系统。
+UpCloudX 通用业务 UI 组件库 & Hooks，基于 Vue 3 + Radix Vue，适用于中后台管理系统。
 
 ## 安装
 
@@ -11,7 +11,7 @@ pnpm add @upcloudx/ui
 **peerDependencies：**
 
 ```bash
-pnpm add vue ant-design-vue dayjs
+pnpm add vue dayjs
 ```
 
 ## 使用
@@ -131,6 +131,12 @@ const { confirmDelete } = useConfirmAction();
   :status-map="{ 0: { text: '待审核', color: 'processing' }, 1: { text: '已通过', color: 'success' } }"
 />
 ```
+
+## 迁移说明（v0.4.0）
+
+从 v0.3.x 升级时，`ant-design-vue` 不再是 peerDependency，可以从项目中移除（如果没有其他地方使用）。
+
+组件 API 保持不变，无需修改业务代码。
 
 ## 开发
 

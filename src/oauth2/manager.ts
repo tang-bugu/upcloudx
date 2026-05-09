@@ -1,10 +1,20 @@
 import { ref } from 'vue';
 
-import { notification } from 'ant-design-vue';
-
 import { createOAuth2Api } from './api';
 import { createTokenManager, generateState } from './token';
 import type { NormalizedUserInfo, OAuth2StoreOptions } from './types';
+
+function showNotification(message: string, description: string) {
+  const el = document.createElement('div');
+  Object.assign(el.style, {
+    position: 'fixed', top: '24px', right: '24px', padding: '12px 20px', background: '#fff',
+    border: '1px solid #fecaca', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    zIndex: '99999', maxWidth: '360px', fontSize: '14px',
+  });
+  el.innerHTML = `<div style="font-weight:600;color:#dc2626;margin-bottom:4px">${message}</div><div style="color:#6b7280">${description}</div>`;
+  document.body.appendChild(el);
+  setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity 0.3s'; setTimeout(() => el.remove(), 300); }, 5000);
+}
 
 export function createOAuth2Manager(options: OAuth2StoreOptions) {
   const {
@@ -108,7 +118,7 @@ export function createOAuth2Manager(options: OAuth2StoreOptions) {
       }
     } catch (error: any) {
       console.error('OAuth2回调处理失败:', error);
-      notification.error({ description: error.message || '认证过程出现错误', duration: 5, message: '登录失败' });
+      showNotification('登录失败', error.message || '认证过程出现错误');
       localStorage.removeItem('oauth2_state');
       localStorage.removeItem('oauth2_state_time');
       setTimeout(() => startOAuth2Flow(), 2000);

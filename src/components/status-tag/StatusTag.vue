@@ -5,17 +5,11 @@ import { certificateStatusMap, domainStatusMap, projectStatusMap } from './prese
 import type { StatusMapItem, StatusPreset } from './types';
 
 interface Props {
-  /** 状态值 */
   status?: number | string;
-  /** 直接指定显示文本（优先级最高） */
   text?: string;
-  /** 直接指定颜色（优先级最高） */
   color?: string;
-  /** 自定义状态映射 */
   statusMap?: Record<number | string, StatusMapItem>;
-  /** 内置预设 */
   preset?: StatusPreset;
-  /** 标签尺寸 */
   size?: 'default' | 'small';
 }
 
@@ -42,9 +36,41 @@ const currentItem = computed(() => props.status !== undefined ? mergedMap.value[
 
 const tagText = computed(() => props.text ?? currentItem.value?.text ?? '未知');
 const tagColor = computed(() => props.color ?? currentItem.value?.color ?? 'default');
-const tagStyle = computed(() => props.size === 'small' ? { fontSize: '12px', padding: '0 4px' } : {});
+
+const colorMap: Record<string, { bg: string; text: string; border: string }> = {
+  success: { bg: '#f0fdf4', text: '#16a34a', border: '#bbf7d0' },
+  processing: { bg: '#eff6ff', text: '#2563eb', border: '#bfdbfe' },
+  error: { bg: '#fef2f2', text: '#dc2626', border: '#fecaca' },
+  warning: { bg: '#fffbeb', text: '#d97706', border: '#fde68a' },
+  default: { bg: '#f3f4f6', text: '#6b7280', border: '#e5e7eb' },
+};
+
+const tagStyle = computed(() => {
+  const c = colorMap[tagColor.value] ?? colorMap.default;
+  const base: Record<string, string> = {
+    backgroundColor: c.bg,
+    color: c.text,
+    border: `1px solid ${c.border}`,
+  };
+  if (props.size === 'small') {
+    base.fontSize = '12px';
+    base.padding = '0 4px';
+  }
+  return base;
+});
 </script>
 
 <template>
-  <a-tag :color="tagColor" :style="tagStyle">{{ tagText }}</a-tag>
+  <span class="upx-tag" :style="tagStyle">{{ tagText }}</span>
 </template>
+
+<style scoped>
+.upx-tag {
+  display: inline-block;
+  padding: 1px 8px;
+  font-size: 12px;
+  line-height: 20px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+</style>

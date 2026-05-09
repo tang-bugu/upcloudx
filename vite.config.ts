@@ -18,7 +18,7 @@ export default defineConfig({
       fileName: 'index',
     },
     rollupOptions: {
-      external: ['vue', 'ant-design-vue', 'dayjs', '@vueuse/core'],
+      external: ['vue', 'dayjs', '@vueuse/core'],
       output: {
         globals: { vue: 'Vue' },
       },
