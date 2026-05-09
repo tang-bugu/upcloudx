@@ -138,6 +138,19 @@ const { confirmDelete } = useConfirmAction();
 
 组件 API 保持不变，无需修改业务代码。
 
+## Vite 插件
+
+```ts
+// vite.config.ts
+import { vitePreauthLoadingPlugin } from '@upcloudx/ui/vite';
+
+export default defineConfig({
+  plugins: [vitePreauthLoadingPlugin()],
+});
+```
+
+注入预认证 Loading Screen 到 `index.html`，配合 `createPreAuth` 使用。
+
 ## 开发
 
 ```bash

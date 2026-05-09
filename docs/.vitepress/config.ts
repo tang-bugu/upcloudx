@@ -5,7 +5,7 @@ export default defineConfig({
   description: '通用业务 UI 组件库 & Hooks',
   base: '/upcloudx/',
   themeConfig: {
-    nav: [{ text: '组件', link: '/components/page-header' }, { text: 'OAuth2', link: '/oauth2' }],
+    nav: [{ text: '组件', link: '/components/page-header' }, { text: 'OAuth2', link: '/oauth2' }, { text: 'Vite 插件', link: '/vite-plugin' }],
     sidebar: [
       {
         text: '通用组件',
@@ -55,6 +55,12 @@ export default defineConfig({
         text: 'OAuth2',
         items: [
           { text: '快速开始', link: '/oauth2' },
+        ],
+      },
+      {
+        text: 'Vite 插件',
+        items: [
+          { text: 'vitePreauthLoadingPlugin', link: '/vite-plugin' },
         ],
       },
     ],
