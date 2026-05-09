@@ -23,10 +23,10 @@ import { SectionTitle } from '../../src/index.ts';
 ```vue
 <template>
   <SectionTitle title="基本信息" />
-  <a-descriptions :column="2" :items="basicItems" />
+  <div><!-- 基本信息内容 --></div>
 
   <SectionTitle title="配置信息" style="margin-top: 24px;" />
-  <a-descriptions :column="2" :items="configItems" />
+  <div><!-- 配置信息内容 --></div>
 
   <SectionTitle title="操作记录" style="margin-top: 24px;" />
   <DataTable :columns="columns" :data-source="logs" />

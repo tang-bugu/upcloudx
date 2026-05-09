@@ -32,17 +32,20 @@ async function handleSave() {
   @cancel="isEditing = false"
 >
   <template #view>
-    <a-descriptions :column="1">
-      <a-descriptions-item label="域名">{{ domain }}</a-descriptions-item>
-      <a-descriptions-item label="状态">已生效</a-descriptions-item>
-    </a-descriptions>
+    <div style="display:grid;grid-template-columns:80px 1fr;gap:12px 16px;font-size:14px">
+      <span style="color:var(--upx-text-secondary)">域名</span>
+      <span>{{ domain }}</span>
+      <span style="color:var(--upx-text-secondary)">状态</span>
+      <span>已生效</span>
+    </div>
   </template>
   <template #edit>
-    <a-form layout="vertical">
-      <a-form-item label="域名">
-        <a-input v-model:value="editDomain" />
-      </a-form-item>
-    </a-form>
+    <div style="display:flex;flex-direction:column;gap:12px">
+      <label style="font-size:14px">
+        <span style="display:block;margin-bottom:4px;color:var(--upx-text-secondary)">域名</span>
+        <input v-model="editDomain" style="width:100%;padding:6px 10px;border:1px solid var(--upx-border-input);border-radius:6px;font-size:14px;background:var(--upx-bg);color:var(--upx-text)" />
+      </label>
+    </div>
   </template>
 </DetailCard>
 
@@ -53,6 +56,16 @@ import { DetailCard } from '@upcloudx/ui';
 
 const isEditing = ref(false);
 const saveLoading = ref(false);
+const domain = ref('example.com');
+const editDomain = ref('example.com');
+
+async function handleSave() {
+  saveLoading.value = true;
+  await new Promise(r => setTimeout(r, 800));
+  domain.value = editDomain.value;
+  saveLoading.value = false;
+  isEditing.value = false;
+}
 </script>
 
 <template>
@@ -65,8 +78,16 @@ const saveLoading = ref(false);
     @save="handleSave"
     @cancel="isEditing = false"
   >
-    <template #view>只读内容</template>
-    <template #edit>编辑表单</template>
+    <template #view>
+      <div>域名：{{ domain }}</div>
+      <div>状态：已生效</div>
+    </template>
+    <template #edit>
+      <label>
+        域名
+        <input v-model="editDomain" />
+      </label>
+    </template>
   </DetailCard>
 </template>
 ```

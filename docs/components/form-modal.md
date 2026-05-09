@@ -20,7 +20,7 @@ async function handleSubmit() {
 }
 </script>
 
-<a-button type="primary" @click="visible = true">新增域名</a-button>
+<button style="padding:6px 16px;background:var(--upx-primary,#1664ff);color:#fff;border:none;border-radius:6px;cursor:pointer" @click="visible = true">新增域名</button>
 
 <FormModal
   v-model:open="visible"
@@ -28,14 +28,16 @@ async function handleSubmit() {
   :loading="submitting"
   @confirm="handleSubmit"
 >
-  <a-form :model="form" layout="vertical">
-    <a-form-item label="名称">
-      <a-input v-model:value="form.name" placeholder="请输入名称" />
-    </a-form-item>
-    <a-form-item label="域名">
-      <a-input v-model:value="form.domain" placeholder="请输入域名" />
-    </a-form-item>
-  </a-form>
+  <div style="display:flex;flex-direction:column;gap:12px">
+    <label style="font-size:14px">
+      <span style="display:block;margin-bottom:4px">名称</span>
+      <input v-model="form.name" placeholder="请输入名称" style="width:100%;padding:6px 10px;border:1px solid var(--upx-border-input,#d1d5db);border-radius:6px;font-size:14px;background:var(--upx-bg,#fff);color:var(--upx-text,#1f2937)" />
+    </label>
+    <label style="font-size:14px">
+      <span style="display:block;margin-bottom:4px">域名</span>
+      <input v-model="form.domain" placeholder="请输入域名" style="width:100%;padding:6px 10px;border:1px solid var(--upx-border-input,#d1d5db);border-radius:6px;font-size:14px;background:var(--upx-bg,#fff);color:var(--upx-text,#1f2937)" />
+    </label>
+  </div>
 </FormModal>
 
 ```vue
@@ -56,7 +58,7 @@ async function handleSubmit() {
 </script>
 
 <template>
-  <Button type="primary" @click="visible = true">新增</Button>
+  <button @click="visible = true">新增</button>
 
   <FormModal
     v-model:open="visible"
@@ -64,11 +66,10 @@ async function handleSubmit() {
     :loading="submitting"
     @confirm="handleSubmit"
   >
-    <a-form :model="form" layout="vertical">
-      <a-form-item label="名称">
-        <a-input v-model:value="form.name" />
-      </a-form-item>
-    </a-form>
+    <form>
+      <label>名称 <input v-model="form.name" /></label>
+      <label>域名 <input v-model="form.domain" /></label>
+    </form>
   </FormModal>
 </template>
 ```

@@ -1,6 +1,6 @@
 # DataTable 数据表格
 
-封装 Ant Design Vue Table，内置分页、空状态。
+封装数据表格，内置分页、空状态。
 
 ## 基础用法
 

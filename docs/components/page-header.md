@@ -25,7 +25,7 @@ import { PageHeader } from '../../src/index.ts';
 ## 带操作按钮
 
 <PageHeader title="域名详情" @back="() => {}">
-  <a-button type="primary" style="margin-left: auto;">编辑</a-button>
+  <button style="margin-left:auto;padding:4px 12px;background:var(--upx-primary,#1664ff);color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:13px">编辑</button>
 </PageHeader>
 
 ```vue

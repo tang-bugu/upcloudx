@@ -21,19 +21,19 @@ const cardTab = ref('a');
   <template #log>
     <div style="padding:16px;">
       <p>当前标签：日志下载</p>
-      <a-button type="primary" size="small">下载日志</a-button>
+      <button style="padding:4px 12px;background:var(--upx-primary,#1664ff);color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:13px">下载日志</button>
     </div>
   </template>
   <template #prefetch>
     <div style="padding:16px;">
       <p>当前标签：刷新预取</p>
-      <a-button size="small">提交刷新任务</a-button>
+      <button style="padding:4px 12px;border:1px solid var(--upx-border-input,#d1d5db);border-radius:4px;cursor:pointer;font-size:13px;background:var(--upx-bg,#fff);color:var(--upx-text,#1f2937)">提交刷新任务</button>
     </div>
   </template>
   <template #config>
     <div style="padding:16px;">
       <p>当前标签：配置管理</p>
-      <a-button size="small">编辑配置</a-button>
+      <button style="padding:4px 12px;border:1px solid var(--upx-border-input,#d1d5db);border-radius:4px;cursor:pointer;font-size:13px;background:var(--upx-bg,#fff);color:var(--upx-text,#1f2937)">编辑配置</button>
     </div>
   </template>
 </TabsPage>
@@ -53,24 +53,9 @@ const tabs = [
 
 <template>
   <TabsPage :tabs="tabs" v-model:activeKey="activeTab">
-    <template #log>
-      <div style="padding:16px;">
-        <p>当前标签：日志下载</p>
-        <Button type="primary" size="small">下载日志</Button>
-      </div>
-    </template>
-    <template #prefetch>
-      <div style="padding:16px;">
-        <p>当前标签：刷新预取</p>
-        <Button size="small">提交刷新任务</Button>
-      </div>
-    </template>
-    <template #config>
-      <div style="padding:16px;">
-        <p>当前标签：配置管理</p>
-        <Button size="small">编辑配置</Button>
-      </div>
-    </template>
+    <template #log>日志下载内容</template>
+    <template #prefetch>刷新预取内容</template>
+    <template #config>配置管理内容</template>
   </TabsPage>
 </template>
 ```
@@ -81,17 +66,6 @@ const tabs = [
   <template #a><div style="padding:16px;">概览内容</div></template>
   <template #b><div style="padding:16px;">详情内容</div></template>
 </TabsPage>
-
-```vue
-<TabsPage
-  :tabs="[{ key: 'a', label: '概览' }, { key: 'b', label: '详情' }]"
-  :card="true"
-  v-model:activeKey="activeTab"
->
-  <template #a><div style="padding:16px;">概览内容</div></template>
-  <template #b><div style="padding:16px;">详情内容</div></template>
-</TabsPage>
-```
 
 ## Props
 

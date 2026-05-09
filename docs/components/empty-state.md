@@ -1,6 +1,6 @@
 # EmptyState 空状态
 
-统一的空状态占位组件，不依赖 ant-design-vue，支持完全自定义。
+统一的空状态占位组件，支持完全自定义。
 
 ## 不同类型
 
@@ -9,13 +9,13 @@ import { EmptyState } from '../../src/index.ts';
 </script>
 
 <div style="display:flex;gap:24px;">
-  <div style="flex:1;border:1px solid #eee;border-radius:8px;">
+  <div style="flex:1;border:1px solid var(--upx-border,#eee);border-radius:8px;">
     <EmptyState />
   </div>
-  <div style="flex:1;border:1px solid #eee;border-radius:8px;">
+  <div style="flex:1;border:1px solid var(--upx-border,#eee);border-radius:8px;">
     <EmptyState type="search" />
   </div>
-  <div style="flex:1;border:1px solid #eee;border-radius:8px;">
+  <div style="flex:1;border:1px solid var(--upx-border,#eee);border-radius:8px;">
     <EmptyState type="error" />
   </div>
 </div>
@@ -56,7 +56,7 @@ import { EmptyState } from '../../src/index.ts';
 ## 带操作按钮
 
 <EmptyState type="error">
-  <a-button type="primary" size="small">重新加载</a-button>
+  <button style="padding:4px 12px;background:var(--upx-primary,#1664ff);color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:13px">重新加载</button>
 </EmptyState>
 
 ```vue
