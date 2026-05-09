@@ -48,19 +48,19 @@ function handleBack() {
   transition: color 0.2s;
 }
 .upx-page-header__back:hover {
-  color: #1664ff;
+  color: var(--upx-primary);
 }
 .upx-page-header__title {
   margin-left: 8px;
   font-size: 18px;
   font-weight: 500;
-  color: inherit;
+  color: var(--upx-text, inherit);
 }
 .upx-page-header__title--clickable {
   cursor: pointer;
   transition: color 0.2s;
 }
 .upx-page-header__title--clickable:hover {
-  color: #1664ff;
+  color: var(--upx-primary);
 }
 </style>

@@ -1,10 +1,87 @@
 /* @upcloudx/ui 组件样式 - 自动随 JS 引入 */
 
+:root {
+  --upx-bg: #fff;
+  --upx-bg-elevated: #fff;
+  --upx-bg-muted: #fafafa;
+  --upx-bg-hover: #f9fafb;
+  --upx-bg-skeleton: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  --upx-border: #e5e7eb;
+  --upx-border-light: #f3f4f6;
+  --upx-border-input: #d1d5db;
+  --upx-text: #1f2937;
+  --upx-text-secondary: #6b7280;
+  --upx-text-muted: #9ca3af;
+  --upx-text-heading: #374151;
+  --upx-primary: #1664ff;
+  --upx-primary-hover: #1250d4;
+  --upx-overlay: rgba(0, 0, 0, 0.45);
+  --upx-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --upx-loading-overlay: rgba(255, 255, 255, 0.6);
+  --upx-dropdown-bg: #fff;
+  --upx-dropdown-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --upx-dropdown-hover: #f3f4f6;
+  --upx-toast-bg: #1a1a1a;
+  --upx-toast-text: #fff;
+}
+
+.dark, [data-theme="dark"], .dark-mode {
+  --upx-bg: #1a1d27;
+  --upx-bg-elevated: #242731;
+  --upx-bg-muted: #2a2d37;
+  --upx-bg-hover: #2f3340;
+  --upx-bg-skeleton: linear-gradient(90deg, #2a2d37 25%, #353840 50%, #2a2d37 75%);
+  --upx-border: #3a3d47;
+  --upx-border-light: #2f3340;
+  --upx-border-input: #4a4d57;
+  --upx-text: #e5e7eb;
+  --upx-text-secondary: #9ca3af;
+  --upx-text-muted: #6b7280;
+  --upx-text-heading: #f1f5f9;
+  --upx-primary: #4d8aff;
+  --upx-primary-hover: #6ba0ff;
+  --upx-overlay: rgba(0, 0, 0, 0.65);
+  --upx-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  --upx-loading-overlay: rgba(26, 29, 39, 0.7);
+  --upx-dropdown-bg: #242731;
+  --upx-dropdown-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --upx-dropdown-hover: #2f3340;
+  --upx-toast-bg: #f1f5f9;
+  --upx-toast-text: #1a1a1a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not(.light):not([data-theme="light"]) {
+    --upx-bg: #1a1d27;
+    --upx-bg-elevated: #242731;
+    --upx-bg-muted: #2a2d37;
+    --upx-bg-hover: #2f3340;
+    --upx-bg-skeleton: linear-gradient(90deg, #2a2d37 25%, #353840 50%, #2a2d37 75%);
+    --upx-border: #3a3d47;
+    --upx-border-light: #2f3340;
+    --upx-border-input: #4a4d57;
+    --upx-text: #e5e7eb;
+    --upx-text-secondary: #9ca3af;
+    --upx-text-muted: #6b7280;
+    --upx-text-heading: #f1f5f9;
+    --upx-primary: #4d8aff;
+    --upx-primary-hover: #6ba0ff;
+    --upx-overlay: rgba(0, 0, 0, 0.65);
+    --upx-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --upx-loading-overlay: rgba(26, 29, 39, 0.7);
+    --upx-dropdown-bg: #242731;
+    --upx-dropdown-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --upx-dropdown-hover: #2f3340;
+    --upx-toast-bg: #f1f5f9;
+    --upx-toast-text: #1a1a1a;
+  }
+}
+
 /* Confirm Dialog */
 .upx-confirm-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: var(--upx-overlay);
   z-index: 10000;
   animation: upx-fade-in 0.15s ease;
 }
@@ -13,23 +90,24 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #fff;
+  background: var(--upx-bg-elevated);
   border-radius: 8px;
   padding: 24px;
   min-width: 360px;
   max-width: 480px;
   z-index: 10001;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--upx-shadow);
   animation: upx-scale-in 0.15s ease;
 }
 .upx-confirm-title {
   font-size: 16px;
   font-weight: 600;
   margin: 0 0 8px;
+  color: var(--upx-text);
 }
 .upx-confirm-desc {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--upx-text-secondary);
   margin: 0 0 24px;
 }
 .upx-confirm-footer {
@@ -42,8 +120,9 @@
   border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
-  border: 1px solid #d1d5db;
-  background: #fff;
+  border: 1px solid var(--upx-border-input);
+  background: var(--upx-bg);
+  color: var(--upx-text);
   transition: all 0.15s;
 }
 .upx-confirm-btn:disabled {
@@ -51,15 +130,15 @@
   cursor: not-allowed;
 }
 .upx-confirm-btn--cancel:hover:not(:disabled) {
-  border-color: #9ca3af;
+  border-color: var(--upx-text-muted);
 }
 .upx-confirm-btn--primary {
-  background: #1664ff;
+  background: var(--upx-primary);
   color: #fff;
-  border-color: #1664ff;
+  border-color: var(--upx-primary);
 }
 .upx-confirm-btn--primary:hover:not(:disabled) {
-  background: #1250d4;
+  background: var(--upx-primary-hover);
 }
 .upx-confirm-btn--danger {
   background: #ef4444;

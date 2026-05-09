@@ -40,15 +40,15 @@ const props = withDefaults(defineProps<StatCardProps>(), {
 </template>
 
 <style scoped>
-.upx-stat-card { background: var(--upx-stat-card-bg, #fff); border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
-.upx-stat-card__label { font-size: 14px; opacity: 0.55; margin-bottom: 8px; }
+.upx-stat-card { background: var(--upx-bg-elevated); border-radius: 8px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+.upx-stat-card__label { font-size: 14px; color: var(--upx-text-secondary); margin-bottom: 8px; }
 .upx-stat-card__value { display: flex; align-items: baseline; gap: 4px; }
-.upx-stat-card__number { font-size: 24px; font-weight: 600; }
-.upx-stat-card__unit { font-size: 14px; opacity: 0.45; }
+.upx-stat-card__number { font-size: 24px; font-weight: 600; color: var(--upx-text); }
+.upx-stat-card__unit { font-size: 14px; color: var(--upx-text-muted); }
 .upx-stat-card__trend { margin-top: 8px; font-size: 14px; }
 .upx-stat-card__trend--up { color: #ef4444; }
 .upx-stat-card__trend--down { color: #22c55e; }
-.upx-skeleton { height: 16px; border-radius: 4px; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: upx-shimmer 1.5s infinite; }
+.upx-skeleton { height: 16px; border-radius: 4px; background: var(--upx-bg-skeleton); background-size: 200% 100%; animation: upx-shimmer 1.5s infinite; }
 .upx-skeleton--short { width: 40%; margin-bottom: 12px; }
 .upx-skeleton--long { width: 70%; height: 24px; }
 @keyframes upx-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }

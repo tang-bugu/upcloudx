@@ -38,11 +38,11 @@ const tagText = computed(() => props.text ?? currentItem.value?.text ?? '未知'
 const tagColor = computed(() => props.color ?? currentItem.value?.color ?? 'default');
 
 const colorMap: Record<string, { bg: string; text: string; border: string }> = {
-  success: { bg: '#f0fdf4', text: '#16a34a', border: '#bbf7d0' },
-  processing: { bg: '#eff6ff', text: '#2563eb', border: '#bfdbfe' },
-  error: { bg: '#fef2f2', text: '#dc2626', border: '#fecaca' },
-  warning: { bg: '#fffbeb', text: '#d97706', border: '#fde68a' },
-  default: { bg: '#f3f4f6', text: '#6b7280', border: '#e5e7eb' },
+  success: { bg: 'rgba(34,197,94,0.1)', text: '#22c55e', border: 'rgba(34,197,94,0.3)' },
+  processing: { bg: 'rgba(37,99,235,0.1)', text: '#3b82f6', border: 'rgba(37,99,235,0.3)' },
+  error: { bg: 'rgba(239,68,68,0.1)', text: '#ef4444', border: 'rgba(239,68,68,0.3)' },
+  warning: { bg: 'rgba(234,179,8,0.1)', text: '#eab308', border: 'rgba(234,179,8,0.3)' },
+  default: { bg: 'rgba(107,114,128,0.1)', text: '#6b7280', border: 'rgba(107,114,128,0.3)' },
 };
 
 const tagStyle = computed(() => {

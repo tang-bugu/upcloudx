@@ -56,18 +56,18 @@ const isFirstStep = computed(() => props.current === 0);
 <style scoped>
 .upx-steps { display: flex; align-items: center; margin-bottom: 32px; }
 .upx-steps__item { display: flex; align-items: center; }
-.upx-steps__indicator { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; border: 2px solid #d1d5db; color: #6b7280; background: #fff; flex-shrink: 0; }
-.upx-steps__item--active .upx-steps__indicator { border-color: #1664ff; color: #1664ff; }
-.upx-steps__item--done .upx-steps__indicator { border-color: #1664ff; background: #1664ff; color: #fff; }
+.upx-steps__indicator { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 500; border: 2px solid var(--upx-border-input); color: var(--upx-text-secondary); background: var(--upx-bg); flex-shrink: 0; }
+.upx-steps__item--active .upx-steps__indicator { border-color: var(--upx-primary); color: var(--upx-primary); }
+.upx-steps__item--done .upx-steps__indicator { border-color: var(--upx-primary); background: var(--upx-primary); color: #fff; }
 .upx-steps__info { margin-left: 8px; }
-.upx-steps__title { font-size: 14px; font-weight: 500; color: #374151; }
-.upx-steps__item--active .upx-steps__title { color: #1664ff; }
-.upx-steps__desc { font-size: 12px; color: #9ca3af; margin-top: 2px; }
-.upx-steps__connector { flex: 1; height: 1px; background: #e5e7eb; margin: 0 12px; min-width: 32px; }
-.upx-steps__connector--done { background: #1664ff; }
+.upx-steps__title { font-size: 14px; font-weight: 500; color: var(--upx-text-heading); }
+.upx-steps__item--active .upx-steps__title { color: var(--upx-primary); }
+.upx-steps__desc { font-size: 12px; color: var(--upx-text-muted); margin-top: 2px; }
+.upx-steps__connector { flex: 1; height: 1px; background: var(--upx-border); margin: 0 12px; min-width: 32px; }
+.upx-steps__connector--done { background: var(--upx-primary); }
 .upx-step-form__footer { display: flex; gap: 8px; }
-.upx-btn { padding: 6px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; border: 1px solid #d1d5db; background: #fff; transition: all 0.15s; }
+.upx-btn { padding: 6px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; border: 1px solid var(--upx-border-input); background: var(--upx-bg); color: var(--upx-text); transition: all 0.15s; }
 .upx-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.upx-btn--primary { background: #1664ff; color: #fff; border-color: #1664ff; }
-.upx-btn--primary:hover:not(:disabled) { background: #1250d4; }
+.upx-btn--primary { background: var(--upx-primary); color: #fff; border-color: var(--upx-primary); }
+.upx-btn--primary:hover:not(:disabled) { background: var(--upx-primary-hover); }
 </style>

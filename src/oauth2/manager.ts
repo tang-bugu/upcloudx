@@ -6,12 +6,18 @@ import type { NormalizedUserInfo, OAuth2StoreOptions } from './types';
 
 function showNotification(message: string, description: string) {
   const el = document.createElement('div');
+  el.className = 'upx-notification-error';
+  el.innerHTML = `<div class="upx-notification-error__title">${message}</div><div class="upx-notification-error__desc">${description}</div>`;
   Object.assign(el.style, {
-    position: 'fixed', top: '24px', right: '24px', padding: '12px 20px', background: '#fff',
-    border: '1px solid #fecaca', borderRadius: '8px', boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+    position: 'fixed', top: '24px', right: '24px', padding: '12px 20px',
+    background: 'var(--upx-bg-elevated, #fff)', border: '1px solid #fecaca', borderRadius: '8px',
+    boxShadow: 'var(--upx-shadow, 0 4px 12px rgba(0,0,0,0.1))',
     zIndex: '99999', maxWidth: '360px', fontSize: '14px',
   });
-  el.innerHTML = `<div style="font-weight:600;color:#dc2626;margin-bottom:4px">${message}</div><div style="color:#6b7280">${description}</div>`;
+  const titleEl = el.querySelector('.upx-notification-error__title') as HTMLElement;
+  const descEl = el.querySelector('.upx-notification-error__desc') as HTMLElement;
+  if (titleEl) Object.assign(titleEl.style, { fontWeight: '600', color: '#dc2626', marginBottom: '4px' });
+  if (descEl) Object.assign(descEl.style, { color: 'var(--upx-text-secondary, #6b7280)' });
   document.body.appendChild(el);
   setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity 0.3s'; setTimeout(() => el.remove(), 300); }, 5000);
 }

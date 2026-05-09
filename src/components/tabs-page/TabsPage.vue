@@ -61,10 +61,10 @@ function handleTabChange(key: string) {
 </template>
 
 <style scoped>
-.upx-tabs-card { background: #fff; border-radius: 8px; border: 1px solid #e5e7eb; padding: 24px; }
-.upx-tabs-list { display: flex; border-bottom: 1px solid #e5e7eb; margin-bottom: 16px; }
-.upx-tabs-trigger { padding: 8px 16px; font-size: 14px; border: none; background: none; cursor: pointer; color: #6b7280; border-bottom: 2px solid transparent; transition: all 0.15s; margin-bottom: -1px; }
-.upx-tabs-trigger:hover { color: #1664ff; }
-.upx-tabs-trigger[data-state="active"] { color: #1664ff; border-bottom-color: #1664ff; }
+.upx-tabs-card { background: var(--upx-bg-elevated); border-radius: 8px; border: 1px solid var(--upx-border); padding: 24px; }
+.upx-tabs-list { display: flex; border-bottom: 1px solid var(--upx-border); margin-bottom: 16px; }
+.upx-tabs-trigger { padding: 8px 16px; font-size: 14px; border: none; background: none; cursor: pointer; color: var(--upx-text-secondary); border-bottom: 2px solid transparent; transition: all 0.15s; margin-bottom: -1px; }
+.upx-tabs-trigger:hover { color: var(--upx-primary); }
+.upx-tabs-trigger[data-state="active"] { color: var(--upx-primary); border-bottom-color: var(--upx-primary); }
 .upx-tabs-content { outline: none; }
 </style>

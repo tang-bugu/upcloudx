@@ -90,9 +90,9 @@ async function handleCopy() {
 
 <style scoped>
 .upx-copy-text { display: inline-flex; align-items: center; gap: 4px; }
-.upx-copy-text__icon { display: inline-block; width: 16px; height: 16px; cursor: pointer; color: #1664ff; transition: color 0.2s; }
-.upx-copy-text__icon:hover { color: #0d47a1; }
-.upx-copy-toast { position: fixed; top: 24px; left: 50%; transform: translateX(-50%); padding: 8px 16px; background: #1a1a1a; color: #fff; border-radius: 6px; font-size: 13px; z-index: 9999; pointer-events: none; }
+.upx-copy-text__icon { display: inline-block; width: 16px; height: 16px; cursor: pointer; color: var(--upx-primary); transition: color 0.2s; }
+.upx-copy-text__icon:hover { color: var(--upx-primary-hover); }
+.upx-copy-toast { position: fixed; top: 24px; left: 50%; transform: translateX(-50%); padding: 8px 16px; background: var(--upx-toast-bg); color: var(--upx-toast-text); border-radius: 6px; font-size: 13px; z-index: 9999; pointer-events: none; }
 .upx-toast-enter-active, .upx-toast-leave-active { transition: opacity 0.2s, transform 0.2s; }
 .upx-toast-enter-from, .upx-toast-leave-to { opacity: 0; transform: translateX(-50%) translateY(-8px); }
 </style>

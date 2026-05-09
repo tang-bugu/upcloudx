@@ -87,18 +87,18 @@ function getWidthStyle(width?: number | string): Record<string, string> {
 <style scoped>
 .upx-search-bar { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 12px; }
 .upx-search-bar__field { display: flex; flex-direction: column; gap: 4px; }
-.upx-search-bar__label { font-size: 13px; color: #6b7280; }
-.upx-search-bar__input { padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none; transition: border-color 0.15s; min-width: 160px; }
-.upx-search-bar__input:focus { border-color: #1664ff; }
+.upx-search-bar__label { font-size: 13px; color: var(--upx-text-secondary); }
+.upx-search-bar__input { padding: 6px 10px; border: 1px solid var(--upx-border-input); border-radius: 6px; font-size: 14px; outline: none; transition: border-color 0.15s; min-width: 160px; background: var(--upx-bg); color: var(--upx-text); }
+.upx-search-bar__input:focus { border-color: var(--upx-primary); }
 .upx-search-bar__input--date { min-width: 130px; }
-.upx-search-bar__select { padding: 6px 10px; border: 1px solid #d1d5db; border-radius: 6px; font-size: 14px; outline: none; min-width: 160px; background: #fff; cursor: pointer; transition: border-color 0.15s; }
-.upx-search-bar__select:focus { border-color: #1664ff; }
+.upx-search-bar__select { padding: 6px 10px; border: 1px solid var(--upx-border-input); border-radius: 6px; font-size: 14px; outline: none; min-width: 160px; background: var(--upx-bg); color: var(--upx-text); cursor: pointer; transition: border-color 0.15s; }
+.upx-search-bar__select:focus { border-color: var(--upx-primary); }
 .upx-search-bar__date-range { display: flex; align-items: center; gap: 6px; }
-.upx-search-bar__separator { color: #9ca3af; }
+.upx-search-bar__separator { color: var(--upx-text-muted); }
 .upx-search-bar__actions { display: flex; gap: 8px; align-items: flex-end; }
-.upx-btn { padding: 6px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; border: 1px solid #d1d5db; background: #fff; transition: all 0.15s; }
+.upx-btn { padding: 6px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; border: 1px solid var(--upx-border-input); background: var(--upx-bg); color: var(--upx-text); transition: all 0.15s; }
 .upx-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.upx-btn:hover:not(:disabled) { border-color: #9ca3af; }
-.upx-btn--primary { background: #1664ff; color: #fff; border-color: #1664ff; }
-.upx-btn--primary:hover:not(:disabled) { background: #1250d4; }
+.upx-btn:hover:not(:disabled) { border-color: var(--upx-text-muted); }
+.upx-btn--primary { background: var(--upx-primary); color: #fff; border-color: var(--upx-primary); }
+.upx-btn--primary:hover:not(:disabled) { background: var(--upx-primary-hover); }
 </style>

@@ -61,18 +61,18 @@ function resolveDisabled(disabled?: boolean | (() => boolean)): boolean {
 
 <style scoped>
 .upx-action-buttons { display: inline-flex; align-items: center; gap: 4px; }
-.upx-action-btn { background: none; border: none; color: #1664ff; cursor: pointer; font-size: 14px; padding: 2px 4px; transition: color 0.15s; }
-.upx-action-btn:hover:not(:disabled) { color: #1250d4; }
-.upx-action-btn:disabled { color: #9ca3af; cursor: not-allowed; }
+.upx-action-btn { background: none; border: none; color: var(--upx-primary); cursor: pointer; font-size: 14px; padding: 2px 4px; transition: color 0.15s; }
+.upx-action-btn:hover:not(:disabled) { color: var(--upx-primary-hover); }
+.upx-action-btn:disabled { color: var(--upx-text-muted); cursor: not-allowed; }
 .upx-action-btn--danger { color: #FA5749; }
 .upx-action-btn--danger:hover:not(:disabled) { color: #dc2626; }
 </style>
 
 <style>
-.upx-dropdown-content { background: #fff; border-radius: 8px; padding: 4px; box-shadow: 0 4px 16px rgba(0,0,0,0.12); z-index: 10000; min-width: 100px; animation: upx-scale-in 0.1s ease; }
-.upx-dropdown-item { padding: 6px 12px; font-size: 14px; border-radius: 4px; cursor: pointer; outline: none; transition: background 0.1s; }
-.upx-dropdown-item:hover, .upx-dropdown-item[data-highlighted] { background: #f3f4f6; }
-.upx-dropdown-item[data-disabled] { color: #9ca3af; cursor: not-allowed; }
+.upx-dropdown-content { background: var(--upx-dropdown-bg); border-radius: 8px; padding: 4px; box-shadow: var(--upx-dropdown-shadow); z-index: 10000; min-width: 100px; animation: upx-scale-in 0.1s ease; }
+.upx-dropdown-item { padding: 6px 12px; font-size: 14px; border-radius: 4px; cursor: pointer; outline: none; transition: background 0.1s; color: var(--upx-text); }
+.upx-dropdown-item:hover, .upx-dropdown-item[data-highlighted] { background: var(--upx-dropdown-hover); }
+.upx-dropdown-item[data-disabled] { color: var(--upx-text-muted); cursor: not-allowed; }
 .upx-dropdown-item--danger { color: #FA5749; }
 @keyframes upx-scale-in { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
 </style>

@@ -48,17 +48,17 @@ const emit = defineEmits<{
 </template>
 
 <style scoped>
-.upx-detail-card { background: #fff; border-radius: 8px; border: 1px solid #e5e7eb; }
-.upx-detail-card__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid #f3f4f6; }
-.upx-detail-card__title { font-size: 15px; font-weight: 600; }
-.upx-detail-card__edit-btn { background: none; border: none; color: #1664ff; cursor: pointer; font-size: 14px; padding: 0; }
-.upx-detail-card__edit-btn:hover { color: #1250d4; }
+.upx-detail-card { background: var(--upx-bg-elevated); border-radius: 8px; border: 1px solid var(--upx-border); }
+.upx-detail-card__header { display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; border-bottom: 1px solid var(--upx-border-light); }
+.upx-detail-card__title { font-size: 15px; font-weight: 600; color: var(--upx-text); }
+.upx-detail-card__edit-btn { background: none; border: none; color: var(--upx-primary); cursor: pointer; font-size: 14px; padding: 0; }
+.upx-detail-card__edit-btn:hover { color: var(--upx-primary-hover); }
 .upx-detail-card__body { padding: 24px; }
 .upx-detail-card__footer { display: flex; gap: 8px; margin-top: 16px; }
-.upx-btn { padding: 6px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; border: 1px solid #d1d5db; background: #fff; transition: all 0.15s; }
+.upx-btn { padding: 6px 16px; border-radius: 6px; font-size: 14px; cursor: pointer; border: 1px solid var(--upx-border-input); background: var(--upx-bg); color: var(--upx-text); transition: all 0.15s; }
 .upx-btn:disabled { opacity: 0.5; cursor: not-allowed; }
-.upx-btn--primary { background: #1664ff; color: #fff; border-color: #1664ff; }
-.upx-btn--primary:hover:not(:disabled) { background: #1250d4; }
-.upx-skeleton { border-radius: 4px; background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: upx-shimmer 1.5s infinite; }
+.upx-btn--primary { background: var(--upx-primary); color: #fff; border-color: var(--upx-primary); }
+.upx-btn--primary:hover:not(:disabled) { background: var(--upx-primary-hover); }
+.upx-skeleton { border-radius: 4px; background: var(--upx-bg-skeleton); background-size: 200% 100%; animation: upx-shimmer 1.5s infinite; }
 @keyframes upx-shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 </style>

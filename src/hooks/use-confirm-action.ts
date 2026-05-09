@@ -7,8 +7,8 @@ function showToast(msg: string) {
   el.textContent = msg;
   Object.assign(el.style, {
     position: 'fixed', top: '24px', left: '50%', transform: 'translateX(-50%)',
-    padding: '8px 16px', background: '#1a1a1a', color: '#fff', borderRadius: '6px',
-    fontSize: '13px', zIndex: '9999', pointerEvents: 'none', transition: 'opacity 0.2s',
+    padding: '8px 16px', background: 'var(--upx-toast-bg, #1a1a1a)', color: 'var(--upx-toast-text, #fff)',
+    borderRadius: '6px', fontSize: '13px', zIndex: '9999', pointerEvents: 'none', transition: 'opacity 0.2s',
   });
   document.body.appendChild(el);
   setTimeout(() => { el.style.opacity = '0'; setTimeout(() => el.remove(), 200); }, 2000);
