@@ -9,16 +9,20 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({ rollupTypes: true, tsconfigPath: './tsconfig.json' }),
-    cssInjectedByJsPlugin(),
+    cssInjectedByJsPlugin({
+      jsAssetsFilterFunction: (outputChunk) => outputChunk.fileName === 'index.js',
+    }),
   ],
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/index.ts'),
+      entry: {
+        index: resolve(__dirname, 'src/index.ts'),
+        vite: resolve(__dirname, 'src/vite/index.ts'),
+      },
       formats: ['es'],
-      fileName: 'index',
     },
     rollupOptions: {
-      external: ['vue', 'dayjs', '@vueuse/core'],
+      external: ['vue', 'dayjs', '@vueuse/core', 'vite'],
       output: {
         globals: { vue: 'Vue' },
       },
